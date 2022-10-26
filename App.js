@@ -10,15 +10,22 @@ export default function App() {
 
   function pegarAPI(){
     setLoading(true);
-    axios.get("http://dog-api.kinduff.com/api/facts?number=5")
-      .then(function (resp){
-          setFrases(resp.data.facts);
+    axios.get("https://pokeapi.co/api/v2/pokemon/1")
+      .then(function (response){
+          setFrases(response.data.forms[0].name);
+          setImg(reponse.data.sprites.front_default);
           setLoading(false);
       })
       .catch(function (err){
           console.log(err);
       })
   }
+
+  function getRandomPokemon(1, 899) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
   return (
     <View style={styles.container}>
