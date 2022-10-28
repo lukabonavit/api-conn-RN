@@ -7,13 +7,14 @@ export default function App() {
 
   const [frases, setFrases] = React.useState([])
   const [loading, setLoading] = React.useState(false)
+  const [img, setImg] = React.useState([])
 
   function pegarAPI(){
     setLoading(true);
     axios.get("https://pokeapi.co/api/v2/pokemon/" + getRandomPokemon(1, 900))
       .then(function (response){
           setFrases(response.data.forms[0].name);
-          setImg(reponse.data.sprites.front_default);
+          setImg(response.data.sprites.front_default)
           setLoading(false);
       })
       .catch(function (err){
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     margin: 20
   },
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: 200,
+    height: 200,
   }
 });
